@@ -2,10 +2,10 @@
 	"schema_version": 1,
 	"quilt_loader": {
 		"group": "dev.proxyfox",
-		"id": "sculk-api",
+		"id": "sculk-api-testmod",
 		"version": "${version}",
 		"metadata": {
-			"name": "Sculk API",
+			"name": "Sculk API Testmod",
 			"description": "A short description of your mod.",
 			"contributors": {
 				"Octal": "Owner"
@@ -17,6 +17,9 @@
 			"icon": "assets/sculk-api/icon.png"
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
+		"entrypoints": {
+			"init": "dev.proxyfox.sculkapi.testmod.TestMod"
+		},
 		"depends": [
 			{
 				"id": "quilt_loader",
@@ -31,6 +34,5 @@
 				"versions": ">=1.19"
 			}
 		]
-	},
-	"mixin": "sculkapi.mixins.json"
+	}
 }
