@@ -7,7 +7,7 @@ In your repositories block in `build.gradle`:
 ```groovy
 repositories {
     //...
-    maven { url "https://jitpack.io" }
+    maven { url "https://maven.proxyfox.dev" }
 }
 ```
 
@@ -15,7 +15,7 @@ In your dependencies block in `build.gradle`:
 ```groovy
 dependencies {
     //...
-    modImplementation("com.github.Oliver-makes-code:Sculk-API:-SNAPSHOT")
+    modImplementation(include("dev.proxyfox:sculk-api:0.1.0+mc.1.19"))
 }
 ```
 
