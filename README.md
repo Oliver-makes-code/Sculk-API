@@ -15,7 +15,7 @@ In your dependencies block in `build.gradle`:
 ```groovy
 dependencies {
     //...
-    modImplementation(include("dev.proxyfox:sculk-api:0.1.0+mc.1.19"))
+    modImplementation(include("dev.proxyfox:sculk-api:0.2.0+mc.1.19"))
 }
 ```
 
