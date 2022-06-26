@@ -5,6 +5,9 @@ import net.minecraft.block.sculk.SculkVeinSpreader;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.WorldAccess;
+import net.minecraft.world.event.GameEvent;
+
+import static dev.proxyfox.sculkapi.impl.ApiInitializer.SCULK_GENERATE;
 
 public interface SculkInteractableImpl extends SculkVeinSpreader {
 	int onInteract(BlockPos pos, WorldAccess world, int charge);
@@ -26,5 +29,9 @@ public interface SculkInteractableImpl extends SculkVeinSpreader {
 	@Override
 	default boolean canUpdateOnSpread() {
 		return true;
+	}
+
+	default void generateSculkCharge(WorldAccess world, BlockPos pos) {
+		world.emitGameEvent(SCULK_GENERATE, pos, new GameEvent.Context(null, null));
 	}
 }

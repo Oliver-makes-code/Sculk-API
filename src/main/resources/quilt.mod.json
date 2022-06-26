@@ -16,6 +16,9 @@
 			},
 			"icon": "assets/sculk-api/icon.png"
 		},
+		"entrypoints": {
+			"init": "dev.proxyfox.sculkapi.impl.ApiInitializer"
+		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"depends": [
 			{

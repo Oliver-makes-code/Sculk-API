@@ -9,9 +9,9 @@ import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.quiltmc.qsl.block.extensions.api.QuiltBlockSettings;
 
 public class TestMod implements ModInitializer {
-	static Block testBlock = new TestSculkInteractableBlock(QuiltBlockSettings.copyOf(Blocks.STONE));
+	static Block testInteractableBlock = new TestSculkInteractableBlock(QuiltBlockSettings.copyOf(Blocks.STONE));
 	@Override
 	public void onInitialize(ModContainer mod) {
-		Registry.register(Registry.BLOCK, new Identifier("sculkapi", "testblock"), testBlock);
+		Registry.register(Registry.BLOCK, new Identifier("sculkapi", "testblock"), testInteractableBlock);
 	}
 }

@@ -4,6 +4,7 @@
   "package": "dev.proxyfox.sculkapi.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "Mixin_SculkCatalystBlockEntity",
     "Mixin_SculkVeinSpreadBehavior"
   ],
   "injectors": {

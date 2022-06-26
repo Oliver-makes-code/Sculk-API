@@ -2,11 +2,14 @@ package dev.proxyfox.sculkapi.testmod;
 
 import dev.proxyfox.sculkapi.api.SculkInteractable;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.random.LegacySimpleRandom;
 import net.minecraft.util.random.RandomGenerator;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
 public class TestSculkInteractableBlock extends Block implements SculkInteractable {
@@ -18,10 +21,18 @@ public class TestSculkInteractableBlock extends Block implements SculkInteractab
 
 	@Override
 	public int onInteract(BlockPos pos, WorldAccess world, int charge) {
-		Direction dir = Direction.random(generator);
-		if (!world.getBlockState(pos.offset(dir,2)).isAir())
-			return 0;
-		world.setBlockState(pos.offset(dir, 2), Blocks.END_STONE.getDefaultState(), 2);
+		return 0;
+	}
+
+	@Override
+	public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
+		super.neighborUpdate(state, world, pos, block, fromPos, notify);
+		if (world.getReceivedRedstonePower(pos) > 0)
+			generateSculkCharge(world, pos);
+	}
+
+	@Override
+	public int getChargeAmount(ServerWorld world, BlockPos pos, BlockState state) {
 		return 1;
 	}
 }

@@ -1,6 +1,8 @@
 package dev.proxyfox.sculkapi.api;
 
 import dev.proxyfox.sculkapi.impl.SculkInteractableImpl;
+import net.minecraft.block.BlockState;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldAccess;
 
@@ -21,4 +23,24 @@ public interface SculkInteractable extends SculkInteractableImpl {
 	 * @author Oliver-makes-code
 	 * */
 	int onInteract(BlockPos pos, WorldAccess world, int charge);
+
+
+	/**
+	 * Gets the charge amount to feed into the catalyst
+	 *
+	 * @author Oliver-makes-code
+	 * */
+	default int getChargeAmount(ServerWorld world, BlockPos pos, BlockState state) {
+		return 0;
+	}
+
+	/**
+	 * Generates a sculk charge
+	 *
+	 * @author Oliver-makes-code
+	 * */
+	@Override
+	default void generateSculkCharge(WorldAccess world, BlockPos pos) {
+		SculkInteractableImpl.super.generateSculkCharge(world, pos);
+	}
 }
